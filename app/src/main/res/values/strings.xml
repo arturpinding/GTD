@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">GTD</string>
+    <string-array name="menu_items_txt">
+        <item>Calendar</item>
+        <item>Inbox</item>
+        <item>Today</item>
+        <item>Projects</item>
+        <item>Next Actions</item>
+        <item>Waiting For</item>
+        <item>Someday/Maybe</item>
+        <item>Reference</item>
+        <item>Weekly review</item>
+        <item>Settings</item>
+        <item>Settings</item>
+        <item>Settings</item>
+        <item>Settings</item>
+    </string-array>
 </resources>
