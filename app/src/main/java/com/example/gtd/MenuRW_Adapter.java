@@ -1,14 +1,15 @@
 package com.example.gtd;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -34,8 +35,11 @@ public class MenuRW_Adapter extends RecyclerView.Adapter<MenuRW_Adapter.MyViewHo
     public void onBindViewHolder(@NonNull MenuRW_Adapter.MyViewHolder holder, int position) {
         holder.activityName.setText(menuItems.get(position).getName());
         holder.activityIcon.setImageResource(menuItems.get(position).getIcon());
-        holder.activityButton.setOnClickListener(v -> {
-            context.startActivity(menuItems.get(position).getIntent());
+        holder.cardView.setOnClickListener(v -> {
+            Intent intent = menuItems.get(position).getIntent();
+            if (intent != null) {
+                context.startActivity(intent);
+            }
         });
 
     }
@@ -48,7 +52,7 @@ public class MenuRW_Adapter extends RecyclerView.Adapter<MenuRW_Adapter.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView activityIcon;
         TextView activityName;
-        Button activityButton;
+        CardView cardView;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -56,7 +60,7 @@ public class MenuRW_Adapter extends RecyclerView.Adapter<MenuRW_Adapter.MyViewHo
 
             activityIcon = itemView.findViewById(R.id.activityIcon);
             activityName = itemView.findViewById(R.id.activityName);
-            activityButton = itemView.findViewById(R.id.activityButton);
+            cardView = itemView.findViewById(R.id.cardView);
         }
     }
 }
