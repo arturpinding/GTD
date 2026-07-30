@@ -54,7 +54,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <!--
     <Button
         android:id="@+id/activityButton"
         android:layout_width="0dp"
@@ -64,6 +63,6 @@
         app:layout_constraintEnd_toEndOf="@id/cardView"
         app:layout_constraintStart_toStartOf="@id/cardView"
         app:layout_constraintTop_toTopOf="@id/cardView" />
-   -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

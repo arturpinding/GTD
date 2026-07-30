@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class Inbox extends Activity {
+public class InboxActivity extends Activity {
     private ArrayList<String> items;
     private ArrayAdapter<String> itemsAdapter;
     private ListView listView;
