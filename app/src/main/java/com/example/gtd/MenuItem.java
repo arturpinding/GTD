@@ -1,12 +1,12 @@
 package com.example.gtd;
 
 import android.content.Intent;
-import android.widget.Button;
+
 
 public class MenuItem {
-    String name;
-    int iconResId;
-    Intent intent;
+    private final String name;
+    private final int iconResId;
+    private final Intent intent;
 
 
     public MenuItem(String name, int iconResId, Intent intent) {

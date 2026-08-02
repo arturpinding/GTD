@@ -25,19 +25,6 @@ public class MainActivity extends Activity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        /*
-        btn_inbox = findViewById(R.id.btn_inbox);
-
-        btn_inbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Main.this, Inbox.class);
-                startActivity(intent);
-            }
-
-
-        });
-        */
 
     }
 
@@ -65,8 +52,4 @@ public class MainActivity extends Activity {
             menuItems.add(new MenuItem(menuItemsNames[i], menuItemsIcons[i], menuItemsIntents[i]));
         }
     }
-
-
-
-
 }

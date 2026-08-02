@@ -15,9 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MenuRW_Adapter extends RecyclerView.Adapter<MenuRW_Adapter.MyViewHolder> {
-    private Context context;
-    private ArrayList<MenuItem> menuItems;
+    private final Context context;
+    private final ArrayList<MenuItem> menuItems;
 
+    //konstruktor
     public MenuRW_Adapter(Context context, ArrayList<MenuItem> menuItems) {
         this.context = context;
         this.menuItems = menuItems;
@@ -41,7 +42,6 @@ public class MenuRW_Adapter extends RecyclerView.Adapter<MenuRW_Adapter.MyViewHo
                 context.startActivity(intent);
             }
         });
-
     }
 
     @Override
