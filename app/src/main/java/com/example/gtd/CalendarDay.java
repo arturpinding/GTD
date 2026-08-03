@@ -1,29 +1,46 @@
 package com.example.gtd;
 
-public class CalendarDay {
-    private final int day;
-    private final String month;
-    private final int year;
-    private final String weekday;
+import java.util.ArrayList;
 
-    public CalendarDay(int day, String month, int year, String weekday) {
-        // mis kuupäeval on mis nädalapäev arvutab välja adapter / calendarActivity
-        this.day = day;
+public class CalendarDay {
+    private int dayNumber;
+    private String month;
+    private int year;
+    private boolean inDisplayedMonth;
+    private boolean today;
+    ArrayList<CalendarEntry> entries;
+
+
+    public CalendarDay(int dayNumber, String month, int year, boolean inDisplayedMonth, boolean today, ArrayList<CalendarEntry> entries) {
+        this.dayNumber = dayNumber;
         this.month = month;
         this.year = year;
-        this.weekday = weekday;
+        this.inDisplayedMonth = inDisplayedMonth;
+        this.today = today;
+        this.entries = entries;
     }
 
-    public int getDay() {
-        return day;
+    public int getDayNumber()  {
+        return dayNumber;
     }
+
     public String getMonth() {
         return month;
     }
+
     public int getYear() {
         return year;
     }
-    public String getWeekday() {
-        return weekday;
+
+    public boolean isInDisplayedMonth() {
+        return inDisplayedMonth;
+    }
+
+    public boolean isToday() {
+        return today;
+    }
+
+    public ArrayList<CalendarEntry> getEntries() {
+        return entries;
     }
 }
