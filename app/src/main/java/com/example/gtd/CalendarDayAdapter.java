@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class CalendarDayAdapter extends RecyclerView.Adapter<CalendarDayAdapter.MyViewHolder> {
 
     private final Context context;
-    private final ArrayList<ArrayList<CalendarDay>> calendarDays;
+    private final ArrayList<CalendarDay> calendarDays;
 
-    public CalendarDayAdapter(Context context, ArrayList<ArrayList<CalendarDay>> calendarDays) {
+    public CalendarDayAdapter(Context context, ArrayList<CalendarDay> calendarDays) {
         this.context = context;
         this.calendarDays = calendarDays;
     }
@@ -30,13 +30,11 @@ public class CalendarDayAdapter extends RecyclerView.Adapter<CalendarDayAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CalendarDayAdapter.MyViewHolder holder, int pos_code) {
-        int pos_x = pos_code / 7; //arvutab välja x positsiooni
-        int pos_y = pos_code % 7; //arvutab välja y positsiooni
+    public void onBindViewHolder(@NonNull CalendarDayAdapter.MyViewHolder holder, int pos) {
         //setime asjad mis peaks olema calendar_day-s.
-        holder.dayNumber.setText(String.valueOf(calendarDays.get(pos_x).get(pos_y).getDayNumber()));
-        holder.entry1.setText(calendarDays.get(pos_x).get(pos_y).getEntries().get(0).getText());
-        holder.entry2.setText(calendarDays.get(pos_x).get(pos_y).getEntries().get(1).getText());
+        holder.dayNumber.setText(String.valueOf(calendarDays.get(pos).getDate().getNum()));
+        holder.entry1.setText(calendarDays.get(pos).getEntries().get(0).getText());
+        holder.entry2.setText(calendarDays.get(pos).getEntries().get(1).getText());
 
     }
 
