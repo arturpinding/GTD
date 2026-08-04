@@ -90,7 +90,6 @@ public class InboxActivity extends Activity {
     }
 
     private void addItem (View view) {
-        //todo
         EditText input = findViewById(R.id.editText);
         String inputText = input.getText().toString();
 
