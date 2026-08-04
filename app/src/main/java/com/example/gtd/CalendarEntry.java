@@ -1,9 +1,12 @@
 package com.example.gtd;
 
+import android.content.SharedPreferences;
+
 public class CalendarEntry {
     private String text;
     private String time;
     private Date date;
+    private SharedPreferences sharedPreferences;
 
     public CalendarEntry(String text, String time, Date date) {
         this.text = text;

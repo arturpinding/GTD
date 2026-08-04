@@ -43,7 +43,7 @@ public class Date {
         while (res.getWeekday() != 1) {
             res = res.prevDay();
         }
-        return res;
+        return res.nextDay();
     }
 
     public Date prevDay() {
@@ -118,6 +118,10 @@ public class Date {
         }
 
         return new Date(nextNum, nextMonth, nextYear);
+    }
+
+    public boolean equals(Date other) {
+        return this.num == other.num && this.month == other.month && this.year == other.year;
     }
 
 

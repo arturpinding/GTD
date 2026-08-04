@@ -51,6 +51,9 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
+        <activity android:name=".CalendarDayActivity"
+            android:exported="false">
+        </activity>
 
 
     </application>
