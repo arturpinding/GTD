@@ -1,12 +1,9 @@
 package com.example.gtd;
 
-import android.app.Activity;
-import android.os.Bundle;
-
-public class ReferenceActivity extends Activity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.reference_activity);
-    }
+public class ReferenceActivity extends GtdListActivity {
+    @Override protected String listKey() { return GtdRepository.REFERENCE; }
+    @Override protected int screenTitle() { return R.string.reference; }
+    @Override protected int screenDescription() { return R.string.reference_description; }
+    @Override protected int inputHint() { return R.string.reference_hint; }
+    @Override protected boolean itemsAreCheckable() { return false; }
 }

@@ -1,12 +1,8 @@
 package com.example.gtd;
 
-import android.app.Activity;
-import android.os.Bundle;
-
-public class WaitingForActivity extends Activity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.waiting_for_activity);
-    }
+public class WaitingForActivity extends GtdListActivity {
+    @Override protected String listKey() { return GtdRepository.WAITING_FOR; }
+    @Override protected int screenTitle() { return R.string.waiting_for; }
+    @Override protected int screenDescription() { return R.string.waiting_for_description; }
+    @Override protected int inputHint() { return R.string.waiting_for_hint; }
 }

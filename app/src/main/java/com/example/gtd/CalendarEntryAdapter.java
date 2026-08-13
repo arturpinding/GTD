@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class CalendarEntryAdapter extends RecyclerView.Adapter<CalendarEntryAdapter.MyViewHolder> {
+    public interface Listener {
+        void onEntryDeleteRequested(CalendarEntry entry);
+    }
     /*
 
 CalendarEntryAdapter.java
@@ -27,10 +30,16 @@ Update when another day is selected.
 
     private final Context context;
     private final ArrayList<CalendarEntry> calendarEntries;
+    private final Listener listener;
 
     public CalendarEntryAdapter(Context context, ArrayList<CalendarEntry> calendarEntries) {
+        this(context, calendarEntries, null);
+    }
+
+    public CalendarEntryAdapter(Context context, ArrayList<CalendarEntry> calendarEntries, Listener listener) {
         this.context = context;
         this.calendarEntries = calendarEntries;
+        this.listener = listener;
     }
 
     @NonNull
@@ -47,6 +56,10 @@ Update when another day is selected.
         //setime asjad mis peaks olema calendar_entry-s.
         holder.entryText.setText(calendarEntries.get(position).getText());
         holder.entryTime.setText(calendarEntries.get(position).getTime());
+        holder.itemView.setOnLongClickListener(view -> {
+            if (listener != null) listener.onEntryDeleteRequested(calendarEntries.get(position));
+            return listener != null;
+        });
     }
 
     @Override
@@ -70,4 +83,3 @@ Update when another day is selected.
 
 
 }
-

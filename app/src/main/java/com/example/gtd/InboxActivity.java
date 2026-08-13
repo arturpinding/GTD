@@ -46,8 +46,9 @@ public class InboxActivity extends Activity {
         items = new ArrayList<>();
         loadItems();
 
-        itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        itemsAdapter = new ArrayAdapter<>(this, R.layout.inbox_item, R.id.inboxItemText, items);
         listView.setAdapter(itemsAdapter);
+        listView.setEmptyView(findViewById(R.id.inboxEmpty));
         setUpListviewListener(); //sa saaks teha pika clicki et asja kustutada.
 
 

@@ -1,116 +1,109 @@
 package com.example.gtd;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
-public class CalendarDayActivity extends Activity {
+public class CalendarDayActivity extends Activity implements CalendarEntryAdapter.Listener {
     public static final String EXTRA_DAY = "com.example.gtd.EXTRA_DAY";
     public static final String EXTRA_MONTH = "com.example.gtd.EXTRA_MONTH";
     public static final String EXTRA_YEAR = "com.example.gtd.EXTRA_YEAR";
-    private static final String PREFS_NAME = "CalendarPrefs";
-    private static final String ENTRIES_KEY = "entries";
-    private SharedPreferences sharedPreferences;
-    ArrayList<CalendarEntry> calendarEntries = new ArrayList<>();
-    private static final String[] MONTH_NAMES = {
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-    };
+
+    private final ArrayList<CalendarEntry> allEntries = new ArrayList<>();
+    private final ArrayList<CalendarEntry> dayEntries = new ArrayList<>();
+    private CalendarStorage storage;
+    private CalendarEntryAdapter adapter;
+    private Date selectedDate;
+    private TextView emptyView;
+    private EditText titleInput;
+    private EditText timeInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_day_activity);
 
-        // Get the date from the intent
         int day = getIntent().getIntExtra(EXTRA_DAY, -1);
         int month = getIntent().getIntExtra(EXTRA_MONTH, -1);
         int year = getIntent().getIntExtra(EXTRA_YEAR, -1);
+        if (day < 1 || month < 0 || month > 11 || year < 1) {
+            finish();
+            return;
+        }
+        selectedDate = new Date(day, month, year);
+        setTitle(selectedDate.getMonth() + " " + day);
 
-        sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        loadEntries();
-        Date date = new Date(day, month, year);
+        ((TextView) findViewById(R.id.calendarDayTitle)).setText(
+                getString(R.string.calendar_day_title, selectedDate.getMonth(), day, year));
+        emptyView = findViewById(R.id.calendarDayEmpty);
+        titleInput = findViewById(R.id.calendarEntryTitleInput);
+        timeInput = findViewById(R.id.calendarEntryTimeInput);
+        storage = new CalendarStorage(this);
 
         RecyclerView recyclerView = findViewById(R.id.calendarDayRecyclerView);
-        CalendarEntryAdapter adapter = new CalendarEntryAdapter(this, calendarEntries);
+        adapter = new CalendarEntryAdapter(this, dayEntries, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        timeInput.setOnClickListener(view -> showTimePicker());
+        Button addButton = findViewById(R.id.calendarEntryAddButton);
+        addButton.setOnClickListener(view -> addEntry());
+        reload();
     }
 
-    /* This is unnecessary because we are loading entries from SharedPreferences in loadEntries() method.
-    private void setUpEntries() {
-
+    private void showTimePicker() {
+        Calendar now = Calendar.getInstance();
+        new TimePickerDialog(this, (picker, hour, minute) ->
+                timeInput.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute)),
+                now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true).show();
     }
-    */
-    private void loadEntries() {
-        calendarEntries.clear();
-        String json = sharedPreferences.getString(ENTRIES_KEY, "[]");
 
-        try {
-            JSONArray entriesJson = new JSONArray(json);
-            for (int i = 0; i < entriesJson.length(); i++) {
-                JSONObject entryJson = entriesJson.getJSONObject(i);
-                String text = entryJson.getString("text");
-                String time = entryJson.getString("time");
-                JSONObject dateJson = entryJson.getJSONObject("date");
-                int day = dateJson.getInt("day");
-                String monthName = dateJson.getString("month");
-                int year = dateJson.getInt("year");
-                Date date = new Date(day, getMonthIndex(monthName), year);
-                Date todate = new Date(3, 7, 2026); //todo
-                if (date.equals(todate)) {
-                    calendarEntries.add(new CalendarEntry(text, time, date));
-                }
-            }
-        } catch (JSONException e) {
-            // Ignore malformed saved data and start with an empty list.
-            calendarEntries.clear();
+    private void addEntry() {
+        String title = titleInput.getText().toString().trim();
+        if (title.isEmpty()) {
+            titleInput.setError(getString(R.string.enter_something));
+            return;
         }
+        allEntries.add(new CalendarEntry(title, timeInput.getText().toString().trim(), selectedDate));
+        storage.saveEntries(allEntries);
+        titleInput.setText("");
+        timeInput.setText("");
+        reload();
     }
 
-    private void saveEntries() {
-        JSONArray entriesJson = new JSONArray();
-
-        try {
-            for (CalendarEntry entry : calendarEntries) {
-                JSONObject entryJson = new JSONObject();
-                entryJson.put("text", entry.getText());
-                entryJson.put("time", entry.getTime());
-                Date date = entry.getDate();
-                JSONObject dateJson = new JSONObject();
-                dateJson.put("day", date.getNum());
-                dateJson.put("month", date.getMonth());
-                dateJson.put("year", date.getYear());
-                entryJson.put("date", dateJson);
-                entriesJson.put(entryJson);
-            }
-
-            sharedPreferences.edit()
-                    .putString(ENTRIES_KEY, entriesJson.toString())
-                    .apply();
-        } catch (JSONException e) {
-            throw new IllegalStateException("Unable to save calendar entries", e);
+    private void reload() {
+        allEntries.clear();
+        allEntries.addAll(storage.loadEntries());
+        dayEntries.clear();
+        for (CalendarEntry entry : allEntries) {
+            if (selectedDate.equals(entry.getDate())) dayEntries.add(entry);
         }
+        adapter.notifyDataSetChanged();
+        emptyView.setVisibility(dayEntries.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
-    private int getMonthIndex(String monthName) throws JSONException {
-        for (int i = 0; i < MONTH_NAMES.length; i++) {
-            if (MONTH_NAMES[i].equals(monthName)) {
-                return i;
-            }
-        }
-        throw new JSONException("Invalid month: " + monthName);
+    @Override
+    public void onEntryDeleteRequested(CalendarEntry entry) {
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.delete_item_question, entry.getText()))
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.delete, (dialog, which) -> {
+                    allEntries.remove(entry);
+                    storage.saveEntries(allEntries);
+                    reload();
+                })
+                .show();
     }
-
-
 }

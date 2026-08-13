@@ -1,6 +1,7 @@
 package com.example.gtd;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Date {
     private int num;
@@ -32,6 +33,10 @@ public class Date {
             add("November");
             add("December");
         }}).get(month);
+    }
+
+    public int getMonthIndex() {
+        return month;
     }
 
     public int getYear() {
@@ -120,9 +125,17 @@ public class Date {
         return new Date(nextNum, nextMonth, nextYear);
     }
 
-    public boolean equals(Date other) {
-        return this.num == other.num && this.month == other.month && this.year == other.year;
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof Date)) return false;
+        Date date = (Date) other;
+        return num == date.num && month == date.month && year == date.year;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(num, month, year);
+    }
 
 }

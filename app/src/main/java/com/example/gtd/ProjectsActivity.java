@@ -1,12 +1,8 @@
 package com.example.gtd;
 
-import android.app.Activity;
-import android.os.Bundle;
-
-public class ProjectsActivity extends Activity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.projects_activity);
-    }
+public class ProjectsActivity extends GtdListActivity {
+    @Override protected String listKey() { return GtdRepository.PROJECTS; }
+    @Override protected int screenTitle() { return R.string.projects; }
+    @Override protected int screenDescription() { return R.string.projects_description; }
+    @Override protected int inputHint() { return R.string.project_hint; }
 }
