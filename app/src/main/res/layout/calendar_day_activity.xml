@@ -3,52 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingStart="16dp"
-    android:paddingTop="18dp"
-    android:paddingEnd="16dp"
-    android:paddingBottom="12dp">
+    android:padding="16dp">
 
     <TextView
+        android:id="@+id/calendarDayTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inbox_title"
         android:textColor="@color/gtd_text_primary"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/inbox_subtitle"
-        android:textColor="@color/gtd_text_secondary"
-        android:textSize="15sp" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="12dp"
         android:layout_weight="1">
-
-        <ListView
-            android:id="@+id/listView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendarDayRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:divider="@null"
-            android:listSelector="@android:color/transparent"
-            android:paddingBottom="8dp" />
-
+            android:layout_height="match_parent" />
         <TextView
-            android:id="@+id/inboxEmpty"
+            android:id="@+id/calendarDayEmpty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_gtd_empty"
-            android:gravity="center"
-            android:text="@string/inbox_empty"
-            android:textColor="@color/gtd_text_secondary"
-            android:textSize="16sp" />
+        android:layout_gravity="center"
+        android:background="@drawable/bg_gtd_empty"
+        android:text="@string/no_events_for_day"
+        android:textColor="@color/gtd_text_secondary"
+            android:textSize="17sp" />
     </FrameLayout>
 
     <LinearLayout
@@ -57,25 +39,37 @@
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/calendarEntryTimeInput"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_gtd_input"
+            android:clickable="true"
+            android:focusable="true"
+            android:hint="@string/time_hint"
+            android:importantForAutofill="no"
+            android:inputType="time"
+            android:minHeight="52dp"
+            android:textColor="@color/gtd_text_primary"
+            android:textColorHint="@color/gtd_text_secondary" />
+        <EditText
+            android:id="@+id/calendarEntryTitleInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="@drawable/bg_gtd_input"
-            android:hint="@string/inbox_hint"
+            android:hint="@string/calendar_entry_hint"
             android:importantForAutofill="no"
             android:inputType="textCapSentences"
             android:minHeight="52dp"
             android:textColor="@color/gtd_text_primary"
             android:textColorHint="@color/gtd_text_secondary" />
-
         <Button
-            android:id="@+id/button"
+            android:id="@+id/calendarEntryAddButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/capture" />
+            android:text="@string/add" />
     </LinearLayout>
 </LinearLayout>

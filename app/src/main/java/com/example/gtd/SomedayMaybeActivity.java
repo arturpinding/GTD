@@ -1,12 +1,9 @@
 package com.example.gtd;
 
-import android.app.Activity;
-import android.os.Bundle;
-
-public class SomedayMaybeActivity extends Activity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.someday_maybe_activity);
-    }
+public class SomedayMaybeActivity extends GtdListActivity {
+    @Override protected String listKey() { return GtdRepository.SOMEDAY_MAYBE; }
+    @Override protected int screenTitle() { return R.string.someday_maybe; }
+    @Override protected int screenDescription() { return R.string.someday_maybe_description; }
+    @Override protected int inputHint() { return R.string.someday_maybe_hint; }
+    @Override protected boolean itemsAreCheckable() { return false; }
 }

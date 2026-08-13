@@ -1,12 +1,9 @@
 package com.example.gtd;
 
-import android.app.Activity;
-import android.os.Bundle;
-
-public class NextActionsActivity extends Activity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.next_actions_activity);
-    }
+public class NextActionsActivity extends GtdListActivity {
+    @Override protected String listKey() { return GtdRepository.NEXT_ACTIONS; }
+    @Override protected int screenTitle() { return R.string.next_actions; }
+    @Override protected int screenDescription() { return R.string.next_actions_description; }
+    @Override protected int inputHint() { return R.string.next_action_hint; }
+    @Override protected boolean canAddToToday() { return true; }
 }

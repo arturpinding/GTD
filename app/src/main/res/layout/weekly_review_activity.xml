@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weekly_review"
+            android:textColor="@color/gtd_text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/weekly_review_subtitle"
+            android:textColor="@color/gtd_text_secondary"
+            android:textSize="15sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/gtd_accent_soft"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp">
+            <TextView
+                android:id="@+id/weeklyReviewSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:padding="18dp"
+                android:textColor="@color/gtd_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/review_checklist"
+            android:textColor="@color/gtd_accent"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/reviewInbox"
+            style="@style/ReviewCheckBox"
+            android:text="@string/review_inbox" />
+        <CheckBox
+            android:id="@+id/reviewCalendar"
+            style="@style/ReviewCheckBox"
+            android:text="@string/review_calendar" />
+        <CheckBox
+            android:id="@+id/reviewNextActions"
+            style="@style/ReviewCheckBox"
+            android:text="@string/review_next_actions" />
+        <CheckBox
+            android:id="@+id/reviewProjects"
+            style="@style/ReviewCheckBox"
+            android:text="@string/review_projects" />
+        <CheckBox
+            android:id="@+id/reviewWaitingFor"
+            style="@style/ReviewCheckBox"
+            android:text="@string/review_waiting_for" />
+        <CheckBox
+            android:id="@+id/reviewSomeday"
+            style="@style/ReviewCheckBox"
+            android:text="@string/review_someday" />
+
+        <Button
+            android:id="@+id/weeklyReviewReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:text="@string/start_new_review" />
+    </LinearLayout>
+</ScrollView>
