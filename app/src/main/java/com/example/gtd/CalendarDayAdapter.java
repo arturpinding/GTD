@@ -12,6 +12,9 @@ import com.google.android.material.card.MaterialCardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class CalendarDayAdapter extends RecyclerView.Adapter<CalendarDayAdapter.MyViewHolder> {
 
@@ -34,36 +37,42 @@ public class CalendarDayAdapter extends RecyclerView.Adapter<CalendarDayAdapter.
     @Override
     public void onBindViewHolder(@NonNull CalendarDayAdapter.MyViewHolder holder, int pos) {
         CalendarDay calendarDay = calendarDays.get(pos);
-        //setime asjad mis peaks olema calendar_day-s.
         holder.dayNumber.setText(String.valueOf(calendarDay.getDate().getNum()));
-        if (calendarDay.getEntries().size() > 1) {
-            holder.entry1.setText(calendarDay.getEntries().get(0).getText());
-            holder.entry2.setText(calendarDay.getEntries().get(1).getText());
-        } else if (calendarDay.getEntries().size() == 1) {
-            holder.entry1.setText(calendarDay.getEntries().get(0).getText());
-            holder.entry2.setText("");
-        } else {
-            holder.entry1.setText("");
-            holder.entry2.setText("");
-        }
-        if (calendarDay.getEntries().size() > 2) {
-            holder.entry3.setText(calendarDay.getEntries().get(2).getText());
-        } else {
-            holder.entry3.setText("");
-        }
+        int entryCount = calendarDay.getEntries().size();
+        holder.entry1.setText(entryCount == 0 ? ""
+                : getEventBadge(entryCount));
+        holder.entry2.setVisibility(View.GONE);
+        holder.entry3.setVisibility(View.GONE);
         if (calendarDay.isToday()) {
             holder.cardView.setCardBackgroundColor(context.getColor(R.color.gtd_accent_soft));
             holder.cardView.setStrokeColor(context.getColor(R.color.gtd_accent));
-            holder.cardView.setStrokeWidth(2);
+            holder.cardView.setStrokeWidth(context.getResources()
+                    .getDimensionPixelSize(R.dimen.calendar_today_stroke));
             holder.dayNumber.setTextColor(context.getColor(R.color.gtd_accent_dark));
+        } else if (!calendarDay.isInDisplayedMonth()) {
+            holder.cardView.setCardBackgroundColor(context.getColor(R.color.gtd_surface_variant));
+            holder.cardView.setStrokeColor(context.getColor(R.color.gtd_outline));
+            holder.cardView.setStrokeWidth(context.getResources()
+                    .getDimensionPixelSize(R.dimen.calendar_stroke));
+            holder.dayNumber.setTextColor(context.getColor(R.color.gtd_text_secondary));
         } else {
             holder.cardView.setCardBackgroundColor(context.getColor(R.color.gtd_surface));
             holder.cardView.setStrokeColor(context.getColor(R.color.gtd_outline));
-            holder.cardView.setStrokeWidth(1);
+            holder.cardView.setStrokeWidth(context.getResources()
+                    .getDimensionPixelSize(R.dimen.calendar_stroke));
             holder.dayNumber.setTextColor(context.getColor(R.color.gtd_text_primary));
         }
+        Date date = calendarDay.getDate();
+        Calendar systemDate = new GregorianCalendar(date.getYear(), date.getMonthIndex(), date.getNum());
+        String fullDate = DateFormat.getDateInstance(DateFormat.FULL).format(systemDate.getTime());
+        int descriptionResource = calendarDay.isToday()
+                ? R.plurals.calendar_day_accessibility_today
+                : R.plurals.calendar_day_accessibility;
+        String description = context.getResources().getQuantityString(
+                descriptionResource, entryCount, fullDate, entryCount);
+        holder.cardView.setContentDescription(description);
+        holder.cardView.setSelected(calendarDay.isToday());
         holder.cardView.setOnClickListener(v -> {
-            Date date = calendarDay.getDate();
             Intent intent = new Intent(context, CalendarDayActivity.class);
             intent.putExtra(CalendarDayActivity.EXTRA_DAY, date.getNum());
             intent.putExtra(CalendarDayActivity.EXTRA_MONTH, date.getMonthIndex());
@@ -77,6 +86,11 @@ public class CalendarDayAdapter extends RecyclerView.Adapter<CalendarDayAdapter.
     @Override
     public int getItemCount() {
         return calendarDays.size();
+    }
+
+    private String getEventBadge(int count) {
+        return count == 1 ? context.getString(R.string.event_dot)
+                : context.getString(R.string.event_dot_count, count);
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

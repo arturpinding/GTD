@@ -6,7 +6,7 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/gtd_accent</item>
         <item name="colorSecondaryVariant">@color/gtd_accent_dark</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/gtd_on_accent</item>
         <item name="colorSurface">@color/gtd_surface</item>
         <item name="colorOnSurface">@color/gtd_text_primary</item>
         <item name="colorError">@color/gtd_danger</item>
@@ -40,7 +40,7 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
         <item name="backgroundTint">@color/gtd_accent</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/gtd_on_accent</item>
     </style>
 
     <style name="WeekdayLabel">
@@ -61,7 +61,7 @@
         <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/gtd_text_secondary</item>
-        <item name="android:textSize">9sp</item>
+        <item name="android:textSize">11sp</item>
     </style>
 
     <style name="ReviewCheckBox">

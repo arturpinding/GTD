@@ -8,10 +8,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class CalendarStorage {
     private static final String PREFS_NAME = "CalendarPrefs";
     private static final String ENTRIES_KEY = "entries";
+    private static final String CORRUPTED_ENTRIES_BACKUP_KEY = "entries_corrupted_backup";
     private static final String[] MONTH_NAMES = {
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
@@ -25,18 +28,26 @@ public class CalendarStorage {
 
     public ArrayList<CalendarEntry> loadEntries() {
         ArrayList<CalendarEntry> entries = new ArrayList<>();
+        String stored = preferences.getString(ENTRIES_KEY, "[]");
         try {
-            JSONArray array = new JSONArray(preferences.getString(ENTRIES_KEY, "[]"));
+            JSONArray array = new JSONArray(stored == null ? "[]" : stored);
             for (int i = 0; i < array.length(); i++) {
+                try {
                 JSONObject object = array.getJSONObject(i);
                 JSONObject dateObject = object.getJSONObject("date");
                 Date date = new Date(dateObject.getInt("day"),
-                        monthIndex(dateObject.getString("month")), dateObject.getInt("year"));
+                        dateObject.has("monthIndex")
+                                ? dateObject.getInt("monthIndex")
+                                : monthIndex(dateObject.getString("month")),
+                        dateObject.getInt("year"));
                 entries.add(new CalendarEntry(object.getString("text"),
                         object.optString("time", ""), date));
+                } catch (JSONException ignored) {
+                    // Keep other valid entries if a single stored record is damaged.
+                }
             }
         } catch (JSONException ignored) {
-            entries.clear();
+            preferences.edit().putString(CORRUPTED_ENTRIES_BACKUP_KEY, stored).apply();
         }
         return entries;
     }
@@ -46,7 +57,14 @@ public class CalendarStorage {
         for (CalendarEntry entry : loadEntries()) {
             if (date.equals(entry.getDate())) result.add(entry);
         }
+        Collections.sort(result, Comparator.comparingInt(CalendarEntry::getMinutesSinceMidnight));
         return result;
+    }
+
+    public void add(CalendarEntry entry) {
+        ArrayList<CalendarEntry> entries = loadEntries();
+        entries.add(entry);
+        saveEntries(entries);
     }
 
     public void saveEntries(ArrayList<CalendarEntry> entries) {
@@ -58,7 +76,7 @@ public class CalendarStorage {
                 object.put("time", entry.getTime());
                 JSONObject dateObject = new JSONObject();
                 dateObject.put("day", entry.getDate().getNum());
-                dateObject.put("month", entry.getDate().getMonth());
+                dateObject.put("monthIndex", entry.getDate().getMonthIndex());
                 dateObject.put("year", entry.getDate().getYear());
                 object.put("date", dateObject);
                 array.put(object);

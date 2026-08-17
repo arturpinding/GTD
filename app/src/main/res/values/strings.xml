@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GTD</string>
     <string name="calendar">Calendar</string>
+    <string name="inbox">Inbox</string>
     <string name="today">Today</string>
     <string name="projects">Projects</string>
     <string name="next_actions">Next Actions</string>
@@ -11,13 +12,11 @@
     <string name="settings">Settings</string>
     <string name="home_title">Get clear. Get moving.</string>
     <string name="home_subtitle">Capture what matters, then choose the next action.</string>
-    <string name="menu_item_icon">Section icon</string>
     <string name="inbox_title">Capture inbox</string>
     <string name="inbox_subtitle">Collect first. Decide what each item means when you process it.</string>
     <string name="inbox_empty">Your inbox is clear.</string>
     <string name="inbox_hint">What has your attention?</string>
     <string name="capture">Capture</string>
-    <string name="calendar_horizon">Your horizon</string>
     <string name="calendar_subtitle">Tap any day to see its schedule or add an event.</string>
     <string name="weekday_monday">M</string>
     <string name="weekday_tuesday">T</string>
@@ -26,6 +25,13 @@
     <string name="weekday_friday">F</string>
     <string name="weekday_saturday">S</string>
     <string name="weekday_sunday">S</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
     <string name="chevron">›</string>
     <string name="add_item_hint">Add an item</string>
 
@@ -33,30 +39,77 @@
     <string name="next_actions_description">Concrete, visible actions you can do next. Tap the star to focus on one Today.</string>
     <string name="waiting_for_description">Things delegated to someone else. Include the person and expected result.</string>
     <string name="someday_maybe_description">Ideas you may want later, without a current commitment.</string>
-    <string name="reference_description">Useful information that needs no action. Long-press an item to delete it.</string>
+    <string name="reference_description">Useful information that needs no action. Tap an item to edit, move, or delete it.</string>
     <string name="project_hint">Outcome, e.g. Submit the application</string>
     <string name="next_action_hint">Next action, e.g. Email Marta for the quote</string>
     <string name="waiting_for_hint">Person + result, e.g. Karl — revised draft</string>
     <string name="someday_maybe_hint">Idea to reconsider later</string>
     <string name="reference_hint">Useful note or link</string>
     <string name="nothing_here_yet">Nothing here yet. Add the first item below.</string>
+    <string name="projects_empty">No active projects. Add an outcome that will take more than one action.</string>
+    <string name="next_actions_empty">No next actions. Add the smallest visible action that moves something forward.</string>
+    <string name="waiting_for_empty">Nothing is waiting on someone else. Add delegated work when you need to follow up.</string>
+    <string name="someday_maybe_empty">No ideas parked for later. Save possibilities here without making a commitment.</string>
+    <string name="reference_empty">No reference notes yet. Save useful information that needs no action.</string>
     <string name="enter_something">Enter something first</string>
     <string name="delete_item_question">Delete “%1$s”?</string>
     <string name="delete">Delete</string>
     <string name="clear">Clear</string>
     <string name="add">Add</string>
     <string name="add_to_today">Add to Today</string>
+    <string name="remove_from_today">Remove from Today</string>
+    <string name="item_actions">Item actions</string>
+    <string name="item_actions_for">Actions for %1$s</string>
+    <string name="event_actions_for">Actions for event %1$s</string>
+    <string name="open_event">Open event %1$s</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="start">Start</string>
+    <string name="move_to">Move to…</string>
+    <string name="edit_item">Edit item</string>
+    <string name="completed">Completed</string>
+    <string name="needs_next_action">Needs a next action</string>
+    <string name="next_action_summary">Next: %1$s</string>
+    <string name="project_summary">Project: %1$s</string>
+    <string name="create_next_action">Create next action</string>
+    <string name="assign_to_project">Assign to project…</string>
+    <string name="no_project">No project</string>
+    <string name="next_action_for">Next action for “%1$s”</string>
+
+    <string name="make_next_action">Next Action</string>
+    <string name="make_today_action">Next Action · Today</string>
+    <string name="make_project">Project</string>
+    <string name="make_waiting_for">Waiting For</string>
+    <string name="add_to_calendar">Calendar…</string>
+    <string name="make_someday_maybe">Someday/Maybe</string>
+    <string name="make_reference">Reference</string>
+    <string name="edit_capture">Edit capture</string>
+    <string name="clarify_capture">What is “%1$s”?</string>
+    <string name="tap_to_clarify">Tap to clarify and organize</string>
+    <string name="moved_to">Moved to %1$s</string>
+    <string name="added_to_calendar">Added to Calendar</string>
+    <string name="captured_to_inbox">Captured to Inbox</string>
 
     <string name="schedule">Calendar schedule</string>
     <string name="focus_actions">Focus actions</string>
     <string name="no_calendar_entries_today">No calendar entries today.</string>
     <string name="no_focus_actions">No focus actions. Star one in Next Actions or add one below.</string>
     <string name="today_quick_action_hint">Quick action for today</string>
+    <string name="add_event">Add event</string>
 
-    <string name="calendar_day_title">%1$s %2$d, %3$d</string>
     <string name="no_events_for_day">No events for this day.</string>
     <string name="time_hint">Time</string>
     <string name="calendar_entry_hint">What is happening?</string>
+    <string name="edit_event">Edit event</string>
+    <string name="clear_time">Clear time</string>
+    <string name="previous_month">Previous month</string>
+    <string name="next_month">Next month</string>
+    <string name="previous_symbol">‹</string>
+    <string name="next_symbol">›</string>
+    <string name="jump_to_today">Today</string>
+    <string name="event_dot">•</string>
+    <string name="event_dot_count">• %1$d</string>
+    <string name="menu_destination_description">%1$s. %2$s</string>
 
     <string name="review_inbox">Get Inbox to zero: clarify or remove every item</string>
     <string name="review_calendar">Review the past and upcoming calendar</string>
@@ -67,27 +120,84 @@
     <string name="start_new_review">Start new review</string>
     <string name="weekly_review_subtitle">Step back, update every list, and rebuild trust in your system.</string>
     <string name="review_checklist">REVIEW CHECKLIST</string>
-    <string name="weekly_review_counts">Inbox: %1$d   Projects: %2$d\nNext actions: %3$d   Waiting: %4$d   Someday: %5$d</string>
+    <string name="weekly_review_counts">Inbox: %1$d   Projects: %2$d\nNext actions: %3$d   Waiting: %4$d\nSomeday: %5$d   Projects needing an action: %6$d</string>
+    <string name="review_progress">Review progress: %1$d/%2$d</string>
+    <string name="open_review_step">Review %1$s</string>
+    <string name="review_complete">Review complete</string>
+    <string name="no_completed_review">No completed review yet</string>
+    <string name="last_review_completed">Last completed %1$s</string>
+    <string name="start_new_review_confirmation">Clear the current checklist and begin a new review?</string>
+
+    <string name="summary_pair">%1$s · %2$s</string>
 
     <string name="data_and_cleanup">Data &amp; cleanup</string>
     <string name="settings_subtitle">See what is stored and remove only what you no longer need.</string>
     <string name="clear_completed">Remove completed items</string>
+    <string name="remove">Remove</string>
     <string name="clear_all_gtd">Clear all GTD lists</string>
     <string name="clear_all_gtd_warning">This removes Projects, Next Actions, Waiting For, Someday/Maybe, and Reference. Inbox and Calendar are not changed.</string>
     <string name="settings_preserve_note">Cleanup here never removes Inbox captures or Calendar entries.</string>
-    <string name="completed_removed">Removed %1$d completed items</string>
+    <string name="gtd_lists_cleared">GTD lists cleared</string>
     <string name="settings_counts">Projects: %1$d\nNext actions: %2$d\nWaiting for: %3$d\nSomeday/Maybe: %4$d\nReference: %5$d</string>
 
-    <string-array name="menu_items_txt">
-        <item>Calendar</item>
-        <item>Inbox</item>
-        <item>Today</item>
-        <item>Projects</item>
-        <item>Next Actions</item>
-        <item>Waiting For</item>
-        <item>Someday/Maybe</item>
-        <item>Reference</item>
-        <item>Weekly Review</item>
-        <item>Settings</item>
-    </string-array>
+    <plurals name="calendar_day_accessibility">
+        <item quantity="one">%1$s, %2$d event</item>
+        <item quantity="other">%1$s, %2$d events</item>
+    </plurals>
+    <plurals name="calendar_day_accessibility_today">
+        <item quantity="one">%1$s, today, %2$d event</item>
+        <item quantity="other">%1$s, today, %2$d events</item>
+    </plurals>
+    <plurals name="inbox_capture_count">
+        <item quantity="one">%1$d capture to clarify</item>
+        <item quantity="other">%1$d captures to clarify</item>
+    </plurals>
+    <plurals name="focus_action_count">
+        <item quantity="one">%1$d focus action</item>
+        <item quantity="other">%1$d focus actions</item>
+    </plurals>
+    <plurals name="event_count_short">
+        <item quantity="one">%1$d event</item>
+        <item quantity="other">%1$d events</item>
+    </plurals>
+    <plurals name="active_project_count">
+        <item quantity="one">%1$d active project</item>
+        <item quantity="other">%1$d active projects</item>
+    </plurals>
+    <plurals name="projects_needing_action_count">
+        <item quantity="one">%1$d needs a next action</item>
+        <item quantity="other">%1$d need a next action</item>
+    </plurals>
+    <plurals name="inbox_item_count">
+        <item quantity="one">%1$d inbox item</item>
+        <item quantity="other">%1$d inbox items</item>
+    </plurals>
+    <plurals name="stalled_project_count">
+        <item quantity="one">%1$d stalled project</item>
+        <item quantity="other">%1$d stalled projects</item>
+    </plurals>
+    <plurals name="active_item_count">
+        <item quantity="one">%1$d active item</item>
+        <item quantity="other">%1$d active items</item>
+    </plurals>
+    <plurals name="today_event_count">
+        <item quantity="one">%1$d event today</item>
+        <item quantity="other">%1$d events today</item>
+    </plurals>
+    <plurals name="saved_item_count">
+        <item quantity="one">%1$d saved item</item>
+        <item quantity="other">%1$d saved items</item>
+    </plurals>
+    <plurals name="clear_completed_confirmation">
+        <item quantity="one">Permanently remove %1$d completed item?</item>
+        <item quantity="other">Permanently remove %1$d completed items?</item>
+    </plurals>
+    <plurals name="clear_completed_count">
+        <item quantity="one">Remove completed item (%1$d)</item>
+        <item quantity="other">Remove completed items (%1$d)</item>
+    </plurals>
+    <plurals name="completed_removed">
+        <item quantity="one">Removed %1$d completed item</item>
+        <item quantity="other">Removed %1$d completed items</item>
+    </plurals>
 </resources>

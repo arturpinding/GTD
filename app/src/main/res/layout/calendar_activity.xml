@@ -12,17 +12,56 @@
         android:paddingTop="18dp"
         android:paddingEnd="16dp"
         android:paddingBottom="12dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/calendarPreviousMonth"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/previous_month"
+                android:text="@string/previous_symbol"
+                android:textColor="@color/gtd_accent_text"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/calendarMonthTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/gtd_text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/calendarNextMonth"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/next_month"
+                android:text="@string/next_symbol"
+                android:textColor="@color/gtd_accent_text"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/calendarTodayButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/jump_to_today"
+            android:textAllCaps="false"
+            android:textColor="@color/gtd_accent_text" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/calendar_horizon"
-            android:textColor="@color/gtd_text_primary"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:gravity="center"
             android:text="@string/calendar_subtitle"
             android:textColor="@color/gtd_text_secondary"
             android:textSize="15sp" />
@@ -35,13 +74,20 @@
         android:orientation="horizontal"
         android:paddingStart="4dp"
         android:paddingEnd="4dp">
-        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_monday" />
-        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_tuesday" />
-        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_wednesday" />
-        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_thursday" />
-        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_friday" />
-        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_saturday" />
-        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_sunday" />
+        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_monday"
+            android:contentDescription="@string/monday" />
+        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_tuesday"
+            android:contentDescription="@string/tuesday" />
+        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_wednesday"
+            android:contentDescription="@string/wednesday" />
+        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_thursday"
+            android:contentDescription="@string/thursday" />
+        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_friday"
+            android:contentDescription="@string/friday" />
+        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_saturday"
+            android:contentDescription="@string/saturday" />
+        <TextView style="@style/WeekdayLabel" android:text="@string/weekday_sunday"
+            android:contentDescription="@string/sunday" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -2,15 +2,18 @@
 <resources>
     <color name="gtd_primary">#27314F</color>
     <color name="gtd_primary_dark">#1B233B</color>
-    <color name="gtd_accent">#0E8F7D</color>
-    <color name="gtd_accent_dark">#087365</color>
+    <color name="gtd_accent">#087365</color>
+    <color name="gtd_accent_dark">#065E53</color>
+    <color name="gtd_accent_text">#087365</color>
     <color name="gtd_accent_soft">#DDF5EF</color>
+    <color name="gtd_on_accent">#FFFFFFFF</color>
     <color name="gtd_background">#F4F6FA</color>
     <color name="gtd_surface">#FFFFFFFF</color>
     <color name="gtd_surface_variant">#EDF1F6</color>
     <color name="gtd_text_primary">#202636</color>
     <color name="gtd_text_secondary">#677086</color>
     <color name="gtd_outline">#DDE2EB</color>
+    <color name="gtd_outline_strong">#7A8598</color>
     <color name="gtd_danger">#B3261E</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

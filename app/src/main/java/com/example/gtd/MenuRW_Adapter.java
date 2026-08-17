@@ -34,10 +34,17 @@ public class MenuRW_Adapter extends RecyclerView.Adapter<MenuRW_Adapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MenuRW_Adapter.MyViewHolder holder, int position) {
-        holder.activityName.setText(menuItems.get(position).getName());
-        holder.activityIcon.setImageResource(menuItems.get(position).getIcon());
+        MenuItem item = menuItems.get(position);
+        holder.activityName.setText(item.getName());
+        holder.activitySummary.setText(item.getSummary());
+        holder.activitySummary.setVisibility(item.getSummary() == null || item.getSummary().isEmpty()
+                ? View.GONE : View.VISIBLE);
+        holder.activityIcon.setImageResource(item.getIcon());
+        holder.cardView.setContentDescription(item.getSummary() == null || item.getSummary().isEmpty()
+                ? item.getName() : context.getString(
+                        R.string.menu_destination_description, item.getName(), item.getSummary()));
         holder.cardView.setOnClickListener(v -> {
-            Intent intent = menuItems.get(position).getIntent();
+            Intent intent = item.getIntent();
             if (intent != null) {
                 context.startActivity(intent);
             }
@@ -52,6 +59,7 @@ public class MenuRW_Adapter extends RecyclerView.Adapter<MenuRW_Adapter.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView activityIcon;
         TextView activityName;
+        TextView activitySummary;
         CardView cardView;
 
 
@@ -60,6 +68,7 @@ public class MenuRW_Adapter extends RecyclerView.Adapter<MenuRW_Adapter.MyViewHo
 
             activityIcon = itemView.findViewById(R.id.activityIcon);
             activityName = itemView.findViewById(R.id.activityName);
+            activitySummary = itemView.findViewById(R.id.activitySummary);
             cardView = itemView.findViewById(R.id.cardView);
         }
     }

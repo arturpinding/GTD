@@ -13,8 +13,8 @@
         android:theme="@style/Theme.GTD" >
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-<!--            android:windowSoftInputMode="adjustNothing"-->
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -22,29 +22,36 @@
         </activity>
 
         <activity android:name=".InboxActivity"
-            android:exported="true">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         <activity android:name=".CalendarActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity android:name=".ReferenceActivity"
-            android:exported="true">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         <activity android:name=".NextActionsActivity"
-            android:exported="true">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
             android:name=".TodayActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ProjectsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".WaitingForActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".SomedayMaybeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".WeeklyReviewActivity"
             android:exported="false" />
@@ -52,7 +59,8 @@
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity android:name=".CalendarDayActivity"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
         </activity>
 
 

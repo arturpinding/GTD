@@ -27,25 +27,40 @@
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:background="@drawable/bg_gtd_icon"
-            android:contentDescription="@string/menu_item_icon"
+            android:importantForAccessibility="no"
             android:padding="13dp"
             android:scaleType="fitCenter"
             app:tint="@color/gtd_accent" />
 
-        <TextView
-            android:id="@+id/activityName"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:textColor="@color/gtd_text_primary"
-            android:textSize="19sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activityName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gtd_text_primary"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/activitySummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/gtd_text_secondary"
+                android:textSize="14sp" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="32dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:importantForAccessibility="no"
             android:text="@string/chevron"
             android:textColor="@color/gtd_text_secondary"
             android:textSize="28sp" />

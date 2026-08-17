@@ -46,12 +46,35 @@
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
+            android:id="@+id/weeklyReviewProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/gtd_text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/weeklyReviewLastCompleted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/gtd_text_secondary"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/weeklyReviewOpenStep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="8dp"
             android:text="@string/review_checklist"
-            android:textColor="@color/gtd_accent"
+            android:textColor="@color/gtd_accent_text"
             android:textSize="13sp"
             android:textStyle="bold" />
 

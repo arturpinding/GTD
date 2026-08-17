@@ -45,10 +45,10 @@ public class Date {
 
     public Date monday() {
         Date res = this;
-        while (res.getWeekday() != 1) {
+        while (res.getWeekday() != 2) {
             res = res.prevDay();
         }
-        return res.nextDay();
+        return res;
     }
 
     public Date prevDay() {

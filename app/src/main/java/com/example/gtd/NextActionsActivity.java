@@ -5,5 +5,6 @@ public class NextActionsActivity extends GtdListActivity {
     @Override protected int screenTitle() { return R.string.next_actions; }
     @Override protected int screenDescription() { return R.string.next_actions_description; }
     @Override protected int inputHint() { return R.string.next_action_hint; }
+    @Override protected int emptyMessage() { return R.string.next_actions_empty; }
     @Override protected boolean canAddToToday() { return true; }
 }

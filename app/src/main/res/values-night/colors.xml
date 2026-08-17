@@ -4,13 +4,16 @@
     <color name="gtd_primary_dark">#10162A</color>
     <color name="gtd_accent">#58D4BE</color>
     <color name="gtd_accent_dark">#2FB8A1</color>
+    <color name="gtd_accent_text">#7BE4D1</color>
     <color name="gtd_accent_soft">#173F39</color>
+    <color name="gtd_on_accent">#10201D</color>
     <color name="gtd_background">#111521</color>
     <color name="gtd_surface">#1B2130</color>
     <color name="gtd_surface_variant">#252C3D</color>
     <color name="gtd_text_primary">#F0F3F8</color>
     <color name="gtd_text_secondary">#AAB3C5</color>
     <color name="gtd_outline">#353D50</color>
+    <color name="gtd_outline_strong">#718099</color>
     <color name="gtd_danger">#FFB4AB</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

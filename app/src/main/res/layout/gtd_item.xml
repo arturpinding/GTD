@@ -22,32 +22,60 @@
         android:paddingEnd="6dp"
         android:paddingBottom="7dp">
 
-        <CheckBox
-            android:id="@+id/gtdItemCheck"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:buttonTint="@color/gtd_accent"
-            android:textColor="@color/gtd_text_primary"
-            android:textSize="17sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/gtdItemTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1"
-            android:textColor="@color/gtd_text_primary"
-            android:textSize="17sp" />
+            <CheckBox
+                android:id="@+id/gtdItemCheck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/gtd_accent"
+                android:minHeight="48dp"
+                android:textColor="@color/gtd_text_primary"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/gtdItemTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:minHeight="48dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/gtd_text_primary"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/gtdItemSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="-4dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/gtd_text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/gtdItemTodayButton"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/add_to_today"
             android:padding="10dp"
             android:src="@android:drawable/btn_star_big_off"
             app:tint="@color/gtd_accent" />
+
+        <ImageButton
+            android:id="@+id/gtdItemMoreButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/item_actions"
+            android:padding="12dp"
+            android:src="@drawable/ic_more_vert"
+            app:tint="@color/gtd_text_secondary" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

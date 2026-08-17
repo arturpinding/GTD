@@ -20,7 +20,7 @@
             android:id="@+id/entryTime"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/gtd_accent"
+            android:textColor="@color/gtd_accent_text"
             android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
@@ -30,5 +30,15 @@
             android:layout_weight="1"
             android:textColor="@color/gtd_text_primary"
             android:textSize="17sp" />
+
+        <ImageButton
+            android:id="@+id/calendarEntryMoreButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/item_actions"
+            android:padding="12dp"
+            android:src="@drawable/ic_more_vert"
+            app:tint="@color/gtd_text_secondary" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
